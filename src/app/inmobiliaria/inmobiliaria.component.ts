@@ -7,49 +7,43 @@ import { Casa } from '../model/casa';
   templateUrl: './inmobiliaria.component.html',
   styleUrls: ['./inmobiliaria.component.scss']
 })
+
 export class InmobiliariaComponent implements OnInit {
-  
-  casas:Casa[]; //Inicializamos el array que recogera los elementos de la BD
 
+  casas: Casa[];
+  casa: Casa;
+  alquiler: boolean;
+  venta: boolean;
+  min: number;
+  max: number;
+  casasFiltradas: Casa[];
+ 
 
-  constructor(public casasService:CasasService) {
+  constructor( private casasService : CasasService ) { 
     console.log('InmobiliariaComponent constructor');
+    
     this.casas = [];
-   }
+    this.casa = new Casa;
+  
+  }
 
   ngOnInit() {
     console.log('InmobiliariaComponent ngOnInit');
-    this.cargarCasas();
-  }
-
-  cargarCasas(){
-    console.log('InmobiliariaComponent cargarCasas');
-    this.casas = [];
-    this.casasService.getTodos().subscribe(
-      resultado => {
-        console.debug('peticion correcta %o', resultado);
-        this.mapeo(resultado);
-      },
-      error=>{
-        console.warn('peticion incorrecta %o', error);
+    this.casasService.getCasas()
+    .subscribe(
+      data => {
+        data.forEach(el => {
+          this.casas.push(el);          
+        });
+        this.casa = this.casas[0];
       }
-    );//subscribe
+    );
   }
-  mapeo( result : any ){
 
-    let casa:Casa;
-    
-    result.forEach(el => {
-      casa = new Casa( el.nombre, el.precio);
-      casa.nombre= el.nombre;
-      casa.precio = el.precio;
-      casa.alquiler=el.alquiler;
-      casa.foto=el.foto;
-      casa.direccion = el.direccion;
-
-      this.casas.push(casa);
-    });
-
+  verCasa(casa){
+    console.log('InmobiliariaComponent verCasa');
+    this.casa= casa;
+    //console.log('%o', this.casa);
   }
 
 }

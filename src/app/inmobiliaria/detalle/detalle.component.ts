@@ -10,13 +10,13 @@ import { CasasService } from '../../providers/casas.service';
 export class DetalleComponent implements OnInit {
   @Input ('casa') casa: Casa;
 
-  constructor() { 
+  constructor(public casaService:CasasService) { 
     console.log('DetalleComponent constructor');
+    
   }
-
   ngOnInit() {
     console.log('DetalleComponent ngOnInit');
-    console.log('Detalle del inmueble: %o', this.casa);
+    
   }
 
 }

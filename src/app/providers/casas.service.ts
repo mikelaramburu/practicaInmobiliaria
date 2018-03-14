@@ -12,14 +12,16 @@ export class CasasService {
     console.log('CasasService constructor');
    }
 
-   getTodos():Observable<any>{
-
-
+   getCasas():Observable<any>{
     let url = END_POINT + '/casas';
     console.log(`CasasService getTodos ${url}`);
     return this.http.get(url);
-
   }
+
+  getCasa(id:number): Observable<any>{
+    let url = END_POINT + '/casas/' + id;
+    return this.http.get(url);
+   }
 
 }
 

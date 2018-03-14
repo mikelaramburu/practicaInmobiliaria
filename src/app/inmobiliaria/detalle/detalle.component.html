@@ -1,0 +1,27 @@
+<!-- DETALLE {{casa.nombre}} -->
+<h2>{{casa.nombre}}</h2>
+
+<div class="casa-content row">
+  
+  <div class="col-md-5">    
+    <a class="thumbnail">
+      <img class="img-rounded" src="{{casa.foto}}" alt="{{casa.nombre}}" data-toggle="modal">
+     
+    </a>
+    <p id="pieFoto">
+      <span> {{casa.nombre}}</span>
+       <span style="float:right">by {{casa.precio}}</span>
+    </p>      
+  </div>
+  
+  <div class="col-md-7">
+    <h4>Servicios</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor='let servicios of casa.servicios'>{{servicios}}</li>
+    </ul>
+  </div> 
+
+
+  
+
+</div>  

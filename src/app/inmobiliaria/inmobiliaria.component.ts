@@ -16,34 +16,41 @@ export class InmobiliariaComponent implements OnInit {
   venta: boolean;
   min: number;
   max: number;
+  casaSeleccionada: Casa;
   casasFiltradas: Casa[];
- 
 
-  constructor( private casasService : CasasService ) { 
+
+  constructor(private casasService: CasasService) {
     console.log('InmobiliariaComponent constructor');
-    
+
     this.casas = [];
     this.casa = new Casa;
-  
+
   }
 
   ngOnInit() {
     console.log('InmobiliariaComponent ngOnInit');
     this.casasService.getCasas()
-    .subscribe(
-      data => {
-        data.forEach(el => {
-          this.casas.push(el);          
-        });
-        this.casa = this.casas[0];
-      }
-    );
+      .subscribe(
+        data => {
+          data.forEach(el => {
+            this.casas.push(el);
+          });
+          this.casa = this.casas[0];
+        }
+      );
   }
 
-  verCasa(casa){
+  verCasa(casa) {
     console.log('InmobiliariaComponent verCasa');
-    this.casa= casa;
+    this.casa = casa;
     //console.log('%o', this.casa);
   }
+  seleccionarCasa(casa: Casa) {
+    console.log('InmobiliriaComponent seleccionarCasa %o', casa);
+    this.casaSeleccionada = casa;
+
+  }
+
 
 }

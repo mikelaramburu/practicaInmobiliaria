@@ -1,9 +1,9 @@
-export class Servicio{
+export class Servicio {
 
     nombre: string;
     disponible: boolean;
 
-    constructor(){
+    constructor() {
         this.nombre = 'servicio';
         this.disponible = false;
     }

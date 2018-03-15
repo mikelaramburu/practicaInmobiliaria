@@ -8,15 +8,15 @@ import { CasasService } from '../../providers/casas.service';
   styleUrls: ['./detalle.component.scss']
 })
 export class DetalleComponent implements OnInit {
-  @Input ('casa') casa: Casa;
+  @Input('casa') casa: Casa;
 
-  constructor(public casaService:CasasService) { 
+  constructor(public casaService: CasasService) {
     console.log('DetalleComponent constructor');
-    
+
   }
   ngOnInit() {
     console.log('DetalleComponent ngOnInit');
-    
+
   }
 
 }
